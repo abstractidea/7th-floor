@@ -3,5 +3,5 @@
 
 Project 7th Floor:  A Puzzle Game in the Making
 Platform:  HTML5 Web Application
-Team:  Jeff Yu, Matthew Vaughn, Abdul Nimeri (reverse-alphabetical order)
+Team:  Abdul Nimeri, Jeff Yu, Matthew Vaughn (NOT reverse-alphabetical order)
 
