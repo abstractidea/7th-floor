@@ -7,11 +7,12 @@
 	var p = Block.prototype = new createjs.Container();
 
 // public properties:
-	Block.WIDTH;
-	Block.HEIGHT;
+	Block.WIDTH = 32;
+	Block.HEIGHT = 32;
 
 // public properties:
 	p.color;
+	p.blockBody;
 
 // constructor:
 	p.Container_initialize = p.initialize;	//unique to avoid overiding base class
@@ -20,11 +21,10 @@
 		this.Container_initialize();
 
 		this.blockBody = new createjs.Shape();
-
+		this.color = "#ff0000";
 		this.addChild(this.blockBody);
 
-		this.makeShape();
-		
+		this.makeShape();	
 	}
 
 // public methods:
@@ -32,8 +32,9 @@
 		//draw square outline for body
 		var g = this.blockBody.graphics;
 		g.clear();
-		g.beginStroke("#FFFFFF");
-
+		g.beginFill(this.color);
+		g.beginStroke("#fff");
+		g.setStrokeStyle(3.5);
 		g.moveTo(0, 0);	//top-left
 		g.lineTo(Block.WIDTH, 0);	//top-right
 		g.lineTo(Block.WIDTH, Block.HEIGHT);	//bottom-right

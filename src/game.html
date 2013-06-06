@@ -3,14 +3,20 @@
 <head>
 	<title>7th Floor Project:  The Game</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<script type="text/javascript" src="./easeljs/utils/UID.js"></script>
-	<script type="text/javascript" src="./easeljs/geom/Matrix2D.js"></script>
-	<script type="text/javascript" src="./easeljs/events/EventDispatcher.js"></script>
-	<script type="text/javascript" src="./easeljs/display/DisplayObject.js"></script>
-	<script type="text/javascript" src="./easeljs/display/Container.js"></script>
-	<script type="text/javascript" src="./easeljs/display/Stage.js"></script>
-	<script type="text/javascript" src="./easeljs/events/MouseEvent.js"></script>
-	<script type="text/javascript" src="./easeljs/display/Text.js"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="res/simple.css" />
+
+	<script type="text/javascript" src="../src/easeljs/utils/UID.js"></script>
+	<script type="text/javascript" src="../src/easeljs/geom/Matrix2D.js"></script>
+	<script type="text/javascript" src="../src/easeljs/events/EventDispatcher.js"></script>
+	<script type="text/javascript" src="../src/easeljs/display/DisplayObject.js"></script>
+	<script type="text/javascript" src="../src/easeljs/display/Container.js"></script>
+	<script type="text/javascript" src="../src/easeljs/display/Stage.js"></script>
+	<script type="text/javascript" src="../src/easeljs/events/MouseEvent.js"></script>
+	<script type="text/javascript" src="../src/easeljs/display/Shape.js"></script>
+	<script type="text/javascript" src="../src/easeljs/display/Graphics.js"></script>
+	<script type="text/javascript" src="../src/easeljs/utils/Ticker.js"></script>
+	<script type="text/javascript" src="../src/easeljs/display/Text.js"></script>
+
 	<script type="text/javascript" src="./misc/Block.js"></script>
 	<script type="text/javascript">
 		function init() {
@@ -21,7 +27,7 @@
 			var stage = new createjs.Stage(canvas);
 
 			// Create a new Text object:
-			var text = new createjs.Text("Hello World!", "12px Verdana", "#1aafff");
+			var text = new createjs.Text("Hello World!", "12px Verdana", "#eee");
 
 			// add the text as a child of the stage. This means it will be drawn any time the stage is updated
 			// and that it's transformations will be relative to the stage coordinates:
@@ -30,6 +36,12 @@
 			// position the text on screen, relative to the stage coordinates:
 			text.x = 32;
 			text.y = 32;
+			
+			var theBlock = new Block();
+			theBlock.x = 200;
+			theBlock.y = 200;
+
+			stage.addChild(theBlock);
 
 			// call update on the stage to make it render the current display list to the canvas:
 			stage.update();
