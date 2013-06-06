@@ -30,7 +30,7 @@
 // public methods:
 	p.makeShape = function () {
 		//draw square outline for body
-		var g = this.shipBody.graphics;
+		var g = this.blockBody.graphics;
 		g.clear();
 		g.beginStroke("#FFFFFF");
 
