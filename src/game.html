@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="../src/easeljs/display/Text.js"></script>
 
 	<script type="text/javascript" src="./misc/Block.js"></script>
+	<script type="text/javascript" src="./misc/Grid.js"></script>
 	<script type="text/javascript">
 		function init() {
 			// get a reference to the canvas we'll be working with:
@@ -36,12 +37,21 @@
 			// position the text on screen, relative to the stage coordinates:
 			text.x = 32;
 			text.y = 32;
-			
-			var theBlock = new Block();
-			theBlock.x = 200;
-			theBlock.y = 200;
 
-			stage.addChild(theBlock);
+			var grid = new Grid();
+			stage.addChild(grid);
+			grid.x = 128;
+			grid.y = 128;
+
+			var theBlock = new Block();
+			theBlock.x = Block.WIDTH;
+			theBlock.y = (Grid.HEIGHT-1)*Block.HEIGHT;
+			grid.addChild(theBlock);
+
+			var theBlock2 = new Block();
+			theBlock2.x = Block.WIDTH*2;
+			theBlock2.y = (Grid.HEIGHT-1)*Block.HEIGHT;
+			grid.addChild(theBlock2);
 
 			// call update on the stage to make it render the current display list to the canvas:
 			stage.update();

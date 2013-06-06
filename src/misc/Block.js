@@ -34,7 +34,7 @@
 		g.clear();
 		g.beginFill(this.color);
 		g.beginStroke("#fff");
-		g.setStrokeStyle(3.5);
+		g.setStrokeStyle(1.5);
 		g.moveTo(0, 0);	//top-left
 		g.lineTo(Block.WIDTH, 0);	//top-right
 		g.lineTo(Block.WIDTH, Block.HEIGHT);	//bottom-right

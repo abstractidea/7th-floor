@@ -21,9 +21,9 @@
 		this.Container_initialize();
 
 		this.gridBody = new createjs.Shape();
-		this.color = "#1aafff";
+		this.color = "#0066cc";
 
-		this.addChild(this.blockBody);
+		this.addChild(this.gridBody);
 
 		this.makeShape();
 		
