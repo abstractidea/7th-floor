@@ -92,6 +92,10 @@
         }
         this.blockGrid[col][row] = block;
 	}
+
+	p.getBlock = function(col, row) {
+		return this.blockGrid[col][row];
+	}
 	
 	p.tick = function (event) {
 		//tick event

@@ -14,14 +14,14 @@ YUI({ useBrowserConsole: true }).use('test', function (Y) {
 		},
 
 		tearDown : function () {
-			delete this.grid;
+			//delete this.grid;
 		},
 
 		//---------------------------------------------
 		// Tests
 		//---------------------------------------------
 
-		testSwap: function () {
+		testSwap : function () {
 			var block1 = this.grid.getBlock(0,0);
 			var block2 = this.grid.getBlock(1,0);
 			this.grid.swapBlocks(0,0);
