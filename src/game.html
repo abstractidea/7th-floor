@@ -65,6 +65,11 @@
 			stage.update();
 
 			window.onkeydown = handleKeyDown;
+            
+            //start game timer   
+            if (!createjs.Ticker.hasEventListener("tick")) { 
+                createjs.Ticker.addEventListener("tick", tick);
+            }
 		}
 
 		function handleKeyDown(e) {
@@ -73,12 +78,9 @@
 				var e = window.event;
 			}
 
-			console.log("handleKeyDown");
-
 			switch (e.keyCode) {
 				case Keycode.LEFT:
 				case Keycode.A:
-					console.log("attempt move left");
 					cursor.attemptMoveLeft();
 					break;
 				case Keycode.RIGHT:
@@ -94,9 +96,14 @@
 					cursor.attemptMoveDown();
 					break;
 			}
-
-			stage.update();
 		}
+
+        function tick(event) {
+            //tick event
+            
+            grid.tick(event);
+            stage.update();
+        }
 	</script>
 </head>
 <body onload="init();">
