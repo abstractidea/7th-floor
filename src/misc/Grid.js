@@ -61,10 +61,8 @@
 	
 	// put a block into the blockGrid at position
 	p.createBlock = function (col, row, blockType) {
-		block = new Block();
-		block.setType(blockType);
+		block = new Block(col, row, blockType);
 		this.blockGrid[col][row] = block;
-		block.setPosition(col, row);
 		this.blockContainer.addChild(block);
 	}
 	

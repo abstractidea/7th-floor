@@ -1,7 +1,9 @@
 (function (window) {
 
-	function Block() {
+	function Block(x, y, type) {
 		this.initialize();
+		this.setPosition(x, y);
+		this.setType(type);
 	}
 
 	var p = Block.prototype = new createjs.Container();
