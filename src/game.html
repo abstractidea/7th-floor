@@ -17,8 +17,10 @@
 	<script type="text/javascript" src="../src/easeljs/utils/Ticker.js"></script>
 	<script type="text/javascript" src="../src/easeljs/display/Text.js"></script>
 
+	<script type="text/javascript" src="./misc/Color.js"></script>
 	<script type="text/javascript" src="./misc/Block.js"></script>
 	<script type="text/javascript" src="./misc/Grid.js"></script>
+	<script type="text/javascript" src="./misc/Cursor.js"></script>
 	<script type="text/javascript">
 		function init() {
 			// get a reference to the canvas we'll be working with:
@@ -43,16 +45,6 @@
 			grid.x = 128;
 			grid.y = 128;
 
-			var theBlock = new Block();
-			theBlock.x = Block.WIDTH;
-			theBlock.y = (Grid.HEIGHT-1)*Block.HEIGHT;
-			grid.addChild(theBlock);
-
-			var theBlock2 = new Block();
-			theBlock2.x = Block.WIDTH*2;
-			theBlock2.y = (Grid.HEIGHT-1)*Block.HEIGHT;
-			grid.addChild(theBlock2);
-			
 			grid.createBlock(2, 2, 2);
 			grid.createBlock(3, 2, 2);
 			grid.createBlock(3, 3, 2);

@@ -34,7 +34,10 @@
 		for (var i=0;i<Grid.WIDTH;i++) {
 			this.blockGrid[i]=[];
 		}
-		
+
+        var cursor = new Cursor();
+        stage.addChild(cursor);
+        cursor.setLeftPosition(1,1);
 	}
 
 // public methods:

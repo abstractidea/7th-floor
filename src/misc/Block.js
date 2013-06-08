@@ -15,6 +15,8 @@
 	p.blockBody;
 	p.type;
 	p.state;
+	p.col;
+	p.row;
 
 // constructor:
 	p.Container_initialize = p.initialize;	//unique to avoid overiding base class
@@ -23,10 +25,12 @@
 		this.Container_initialize();
 
 		this.blockBody = new createjs.Shape();
-		this.color = "#ff0000";
 		this.addChild(this.blockBody);
+		this.color = "#ff0000";
+		this.col = 0;
+		this.row = 0;
 
-		this.makeShape();	
+		this.makeShape();
 	}
 
 // public methods:
