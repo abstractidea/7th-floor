@@ -1,6 +1,6 @@
 (function (window) {
 
-	function Block() {
+	function Cursor() {
 		this.initialize();
 	}
 
@@ -36,8 +36,8 @@
 		//draw square outline for body
 		var g = this.cursorBody.graphics;
 		g.clear();
-		g.beginStroke("#123019");
-		g.setStrokeStyle(1.5);
+		g.beginStroke("#1aafff");
+		g.setStrokeStyle(3.5);
 		g.moveTo(0, 0);	//top-left
 		g.lineTo(Cursor.BLOCK_WIDTH, 0);	//top-right
 		g.lineTo(Cursor.BLOCK_WIDTH, Cursor.BLOCK_HEIGHT);	//bottom-right

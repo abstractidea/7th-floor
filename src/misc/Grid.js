@@ -36,7 +36,7 @@
 		}
 
         var cursor = new Cursor();
-        stage.addChild(cursor);
+        this.addChild(cursor);
         cursor.setLeftPosition(1,1);
 	}
 
