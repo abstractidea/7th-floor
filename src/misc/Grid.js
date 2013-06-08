@@ -65,13 +65,14 @@
 		block.setType(blockType);
 		this.blockGrid[col][row] = block;
 		block.setPosition(col, row);
+        block.setGrid(this);
 		this.blockContainer.addChild(block);
 	}
 	
 	// swap a block with block to the right
 	p.swapBlocks = function (col, row) {
-		block1 = this.blockGrid[col][row];
-		block2 = this.blockGrid[col+1][row];
+		block1 = this.getBlock(col, row);
+		block2 = this.getBlock(col+1)(row);
 		
 		// TODO send blocks into swapping state
 		
@@ -96,9 +97,21 @@
 	p.getBlock = function(col, row) {
 		return this.blockGrid[col][row];
 	}
+    
+    p.dropBlock = function(col, row) {
+        
+    }
 	
 	p.tick = function (event) {
 		//tick event
+        
+        //tick all blocks
+        for (var i=0;i<Grid.WIDTH;i++){
+            for (var j=0;j<Grid.HEIGHT;j++) {
+                block = this.getBlock(i, j);
+                block.tick(event);
+            }
+        }
 				
 	}
 

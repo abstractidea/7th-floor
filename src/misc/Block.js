@@ -17,6 +17,7 @@
 	p.state;
 	p.col;
 	p.row;
+    p.grid;
 
 // constructor:
 	p.Container_initialize = p.initialize;	//unique to avoid overiding base class
@@ -51,6 +52,9 @@
 
 	p.tick = function (event) {
 		//tick event
+        
+        // falling (TODO: STATES)
+        
 				
 	}
 
@@ -83,6 +87,14 @@
 	p.getType = function () {
 		return this.type;
 	}
+    
+    p.setGrid = function (grid) {
+        this.grid = grid;
+    }
+    
+    p.getGrid = function () {
+        return this.grid;
+    }
 	
 	p.setPosition = function (col, row) {
 		this.col = col;
