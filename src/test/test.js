@@ -1,32 +1,35 @@
 YUI({ useBrowserConsole: true }).use('test', function (Y) {
-  var testCase = new Y.Test.Case({
+	var swapCase = new Y.Test.Case({
 
-      name: "TestCase Name",
+		name: "Swapping Test",
 
-      //---------------------------------------------
-      // Setup and tear down
-      //---------------------------------------------
+		//---------------------------------------------
+		// Setup and tear down
+		//---------------------------------------------
 
-      setUp : function () {
-          this.data = { name : "Nicholas", age : 28 };
-      },
+		setUp : function () {
+			this.grid = new Grid();
+			this.grid.createBlock(0,0,1);
+			this.grid.createBlock(1,0,1);
+		},
 
-      tearDown : function () {
-          delete this.data;
-      },
+		tearDown : function () {
+			delete this.grid;
+		},
 
-      //---------------------------------------------
-      // Tests
-      //---------------------------------------------
+		//---------------------------------------------
+		// Tests
+		//---------------------------------------------
 
-      testName: function () {
-          Y.Assert.areEqual("Nicholas", this.data.name, "Name should be 'Nicholas'");
-      },
+		testSwap: function () {
+			var block1 = this.grid.getBlock(0,0);
+			var block2 = this.grid.getBlock(1,0);
+			this.grid.swapBlocks(0,0);
+			Y.Assert.areEqual(block1, this.grid.getBlock(1,0), "Swapped correctly");
+			Y.Assert.areEqual(block2, this.grid.getBlock(0,0), "Swapped correctly");
+		}
 
-      testAge: function () {
-          Y.Assert.areEqual(28, this.data.age, "Age should be 28");
-      }
-  });
-  Y.Test.Runner.add(testCase);
-  Y.Test.Runner.run();
+	});
+	Y.Test.Runner.add(swapCase);
+	Y.Test.Runner.run();
 });
