@@ -32,7 +32,7 @@
 		this.makeShape();
         
         this.blockContainer = new createjs.Container();
-        this.addChild(blockContainer);
+        this.addChild(this.blockContainer);
 		
 		this.blockGrid = [];
 		for (var i=0;i<Grid.WIDTH;i++) {

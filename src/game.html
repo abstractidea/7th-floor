@@ -22,6 +22,8 @@
 	<script type="text/javascript" src="./misc/Block.js"></script>
 	<script type="text/javascript" src="./misc/Grid.js"></script>
 	<script type="text/javascript">
+    
+        var grid;
 		function init() {
 			// get a reference to the canvas we'll be working with:
 			var canvas = document.getElementById("gameCanvas");
@@ -40,7 +42,7 @@
 			text.x = 32;
 			text.y = 32;
 
-			var grid = new Grid();
+			grid = new Grid();
 			stage.addChild(grid);
 			grid.x = 128;
 			grid.y = 128;
@@ -53,6 +55,18 @@
 
 			// call update on the stage to make it render the current display list to the canvas:
 			stage.update();
+            
+            //start game timer   
+            if (!createjs.Ticker.hasEventListener("tick")) { 
+                createjs.Ticker.addEventListener("tick", tick);
+            }
+
+            function tick(event) {
+                //tick event
+                
+                grid.tick(event);
+                stage.update();
+            }
 		}
 	</script>
 </head>
