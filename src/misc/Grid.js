@@ -16,6 +16,8 @@
 	
 	// 2d array of blocks
 	p.blockGrid;
+    
+    p.blockContainer;
 
 // constructor:
 	p.Container_initialize = p.initialize;	//unique to avoid overiding base class
@@ -23,18 +25,23 @@
 	p.initialize = function () {
 		this.Container_initialize();
 
-		this.gridBody = new createjs.Shape();
 		this.color = "#0066cc";
-
+		this.gridBody = new createjs.Shape();
 		this.addChild(this.gridBody);
 
 		this.makeShape();
+        
+        this.blockContainer = new createjs.Container();
+        this.addChild(blockContainer);
 		
 		this.blockGrid = [];
 		for (var i=0;i<Grid.WIDTH;i++) {
 			this.blockGrid[i]=[];
 		}
-		
+
+        var cursor = new Cursor();
+        this.addChild(cursor);
+        cursor.setLeftPosition(1,1);
 	}
 
 // public methods:
@@ -58,7 +65,7 @@
 		block.setType(blockType);
 		this.blockGrid[col][row] = block;
 		block.setPosition(col, row);
-		this.addChild(block);
+		this.blockContainer.addChild(block);
 	}
 	
 	// swap a block with block to the right
