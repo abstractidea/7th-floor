@@ -53,15 +53,39 @@
 	}
 	
 	// put a block into the blockGrid at position
-	p.putBlock = function (block, col, row) {
+	p.createBlock = function (col, row, blockType) {
+		block = new Block();
+		block.setType(blockType);
 		this.blockGrid[col][row] = block;
+		block.setPosition(col, row);
+		this.addChild(block);
+	}
+	
+	// swap a block with block to the right
+	p.swapBlocks = function (col, row) {
+		block1 = this.blockGrid[col][row];
+		block2 = this.blockGrid[col+1][row];
+		
+		// TODO send blocks into swapping state
+		
+		this.setBlockPosition(block1, col+1, row);
+        this.setBlockPosition(block2, col, row);
 	}
 	
 	// delete the block in position
 	p.deleteBlock = function (col, row) {
 		this.blockGrid[col][row] = null;
+		//remove block container
 	}
 
+	// set the blocks x and y coords based on grid cell
+	p.setBlockPosition = function (block, col, row) {
+        if (block != null) {
+            block.setPosition(col, row);
+        }
+        this.blockGrid[col][row] = block;
+	}
+	
 	p.tick = function (event) {
 		//tick event
 				

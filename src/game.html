@@ -52,6 +52,12 @@
 			theBlock2.x = Block.WIDTH*2;
 			theBlock2.y = (Grid.HEIGHT-1)*Block.HEIGHT;
 			grid.addChild(theBlock2);
+			
+			grid.createBlock(2, 2, 2);
+			grid.createBlock(3, 2, 2);
+			grid.createBlock(3, 3, 2);
+			grid.swapBlocks(3,3);
+            grid.swapBlocks(4,3);
 
 			// call update on the stage to make it render the current display list to the canvas:
 			stage.update();

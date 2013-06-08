@@ -13,6 +13,8 @@
 // public properties:
 	p.color;
 	p.blockBody;
+	p.type;
+	p.state;
 
 // constructor:
 	p.Container_initialize = p.initialize;	//unique to avoid overiding base class
@@ -48,6 +50,21 @@
 				
 	}
 
+	p.setType = function (blockType) {
+		this.type = blockType;
+	}
+	
+	p.getType = function () {
+		return this.type;
+	}
+	
+	p.setPosition = function (col, row) {
+		this.col = col;
+		this.row = row;
+		this.x = col * Block.WIDTH;
+		this.y = (Grid.HEIGHT - row - 1) * Block.HEIGHT;
+	}
+	
 	window.Block = Block;
 
 }(window));
