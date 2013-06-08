@@ -67,7 +67,7 @@
 	// swap a block with block to the right
 	p.swapBlocks = function (col, row) {
 		block1 = this.getBlock(col, row);
-		block2 = this.getBlock(col+1)(row);
+		block2 = this.getBlock(col+1,row);
 		
 		// TODO send blocks into swapping state
 		
@@ -104,7 +104,9 @@
         for (var i=0;i<Grid.WIDTH;i++){
             for (var j=0;j<Grid.HEIGHT;j++) {
                 block = this.getBlock(i, j);
-                block.tick(event);
+                if (block != null) {
+                    block.tick(event);
+                }
             }
         }
 				
