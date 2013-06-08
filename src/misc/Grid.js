@@ -38,10 +38,6 @@
 		for (var i=0;i<Grid.WIDTH;i++) {
 			this.blockGrid[i]=[];
 		}
-
-        var cursor = new Cursor();
-        this.addChild(cursor);
-        cursor.setLeftPosition(1,1);
 	}
 
 // public methods:
@@ -61,8 +57,7 @@
 	
 	// put a block into the blockGrid at position
 	p.createBlock = function (col, row, blockType) {
-		block = new Block();
-		block.setType(blockType);
+		block = new Block(col, row, blockType);
 		this.blockGrid[col][row] = block;
 		block.setPosition(col, row);
         block.setGrid(this);

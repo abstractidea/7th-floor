@@ -18,18 +18,22 @@
 	<script type="text/javascript" src="../src/easeljs/display/Text.js"></script>
 
 	<script type="text/javascript" src="./misc/Color.js"></script>
+	<script type="text/javascript" src="./misc/Keycode.js"></script>
 	<script type="text/javascript" src="./misc/Cursor.js"></script>
 	<script type="text/javascript" src="./misc/Block.js"></script>
 	<script type="text/javascript" src="./misc/Grid.js"></script>
 	<script type="text/javascript">
-    
-        var grid;
+		// global variables
+		var cursor;
+		var grid;
+		var stage;
+
 		function init() {
 			// get a reference to the canvas we'll be working with:
 			var canvas = document.getElementById("gameCanvas");
 
 			// create a stage object to work with the canvas. This is the top level node in the display list:
-			var stage = new createjs.Stage(canvas);
+			stage = new createjs.Stage(canvas);
 
 			// Create a new Text object:
 			var text = new createjs.Text("Hello World!", "12px Verdana", "#eee");
@@ -53,21 +57,53 @@
 			grid.swapBlocks(3,3);
             grid.swapBlocks(4,3);
 
+		    cursor = new Cursor();
+		    grid.addChild(cursor);
+		    cursor.setLeftPosition(2,3);
+
 			// call update on the stage to make it render the current display list to the canvas:
 			stage.update();
+
+			window.onkeydown = handleKeyDown;
             
             //start game timer   
             if (!createjs.Ticker.hasEventListener("tick")) { 
                 createjs.Ticker.addEventListener("tick", tick);
             }
-
-            function tick(event) {
-                //tick event
-                
-                grid.tick(event);
-                stage.update();
-            }
 		}
+
+		function handleKeyDown(e) {
+			// for crossbrowser compatibility, as found in CreateJS example code
+			if (!e) {
+				var e = window.event;
+			}
+
+			switch (e.keyCode) {
+				case Keycode.LEFT:
+				case Keycode.A:
+					cursor.attemptMoveLeft();
+					break;
+				case Keycode.RIGHT:
+				case Keycode.D:
+					cursor.attemptMoveRight();
+					break;
+				case Keycode.UP:
+				case Keycode.W:
+					cursor.attemptMoveUp();
+					break;
+				case Keycode.DOWN:
+				case Keycode.S:
+					cursor.attemptMoveDown();
+					break;
+			}
+		}
+
+        function tick(event) {
+            //tick event
+            
+            grid.tick(event);
+            stage.update();
+        }
 	</script>
 </head>
 <body onload="init();">
