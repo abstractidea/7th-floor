@@ -56,6 +56,28 @@
 
 	p.setType = function (blockType) {
 		this.type = blockType;
+        switch (blockType) {
+            case Color.GREEN:
+                this.color = "green";
+                this.makeShape();
+                break;
+            case Color.BLUE:
+                this.color = "blue";
+                this.makeShape();
+                break;
+            case Color.PURPLE:
+                this.color = "purple";
+                this.makeShape();
+                break;
+            case Color.RED:
+                this.color = "red";
+                this.makeShape();
+                break;
+            case Color.YELLOW:
+                this.color = "yellow";
+                this.makeShape();
+                break;
+        }        
 	}
 	
 	p.getType = function () {
