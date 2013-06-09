@@ -9,10 +9,12 @@
 // public properties:
 	Grid.WIDTH = 7;
 	Grid.HEIGHT = 14;
+    Grid.CLIMB_SPEED = .5;
 
 // public properties:
 	p.color;
 	p.gridBody;
+    p.climbHeight;
 	
 	// 2d array of blocks
 	p.blockGrid;
@@ -31,13 +33,17 @@
 
 		this.makeShape();
         
-        this.blockContainer = new createjs.Container();
-        this.addChild(this.blockContainer);
+        this.climbHeight = 0;
 		
 		this.blockGrid = [];
 		for (var i=0;i<Grid.WIDTH;i++) {
 			this.blockGrid[i]=[];
 		}
+        
+        this.blockContainer = new createjs.Container();
+        this.addChild(this.blockContainer);
+        
+        
 	}
 
 // public methods:
@@ -105,14 +111,69 @@
             this.setBlockPosition(block2, col, row);
         }
     }
+    
+    // blocks fall up
+    p.raiseBlock = function(col, row) {
+        if (row < Grid.HEIGHT && this.getBlock(col, row+1) == null) {
+            block1 = this.getBlock(col, row);
+            block2 = null
+            
+            // TODO states
+            
+            this.setBlockPosition(block1, col, row+1);
+            this.setBlockPosition(block2, col, row);
+        }
+    }
+            
+    
+    // create a new row of inactive blocks
+    
+    p.generateRow = function() {
+        for (var i=0;i<Grid.WIDTH;i++) {
+            var randomnumber=Math.floor(Math.random()*5)
+            this.createBlock(i,0,randomnumber);
+        }
+    
+    }
+    
+    // shift all blocks up 1 grid coordinate
+    
+    p.shiftAllBlocksUp = function() {
+        for (var i=0;i<Grid.WIDTH;i++){
+            for (var j=Grid.HEIGHT-2;j>=0;j--) {
+                this.raiseBlock(i, j);
+            }
+        }
+    }
+    
+    /* 
+    grid slowly moves up
+    at 1 block height:
+        - drop grid back to start position
+        - shift all blocks up
+        - create new row of blocks
+    */
+    
+    p.handleClimb = function() {
+        this.y -= Grid.CLIMB_SPEED;
+        this.climbHeight += Grid.CLIMB_SPEED;
+        if (this.climbHeight >= Block.HEIGHT) {
+            this.shiftAllBlocksUp();
+            this.y += Block.HEIGHT;
+            this.climbHeight -= Block.HEIGHT;
+            this.generateRow();
+            // TODO shift cursor up
+        }
+    }
 	
 	p.tick = function (event) {
 		//tick event
+        this.handleClimb();
         
         //tick all blocks
         //try to let blocks fall
         for (var i=0;i<Grid.WIDTH;i++){
-            for (var j=0;j<Grid.HEIGHT;j++) {
+            for (var j=1;j<Grid.HEIGHT;j++) {
                 block = this.getBlock(i, j);
                 if (block != null) {
                     block.tick(event);
