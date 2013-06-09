@@ -69,7 +69,7 @@
 		block1 = this.getBlock(col, row);
 		block2 = this.getBlock(col+1,row);
 		
-		// TODO send blocks into swapping state
+		// TODO deal with swapping state
 		
 		this.setBlockPosition(block1, col+1, row);
         this.setBlockPosition(block2, col, row);
@@ -93,24 +93,30 @@
 		return this.blockGrid[col][row];
 	}
     
+    // the block falls if it is able to
     p.dropBlock = function(col, row) {
-        block1 = this.getBlock(col, row);
-        block2 = null
-        
-        // TODO send blocks into falling state
-        this.setBlockPosition(block1, col, row-1);
-        this.setBlockPosition(block2, col, row);
+        if (row > 0 && this.getBlock(col, row-1) == null) {
+            block1 = this.getBlock(col, row);
+            block2 = null
+            
+            // TODO deal with falling state
+            
+            this.setBlockPosition(block1, col, row-1);
+            this.setBlockPosition(block2, col, row);
+        }
     }
 	
 	p.tick = function (event) {
 		//tick event
         
         //tick all blocks
+        //try to let blocks fall
         for (var i=0;i<Grid.WIDTH;i++){
             for (var j=0;j<Grid.HEIGHT;j++) {
                 block = this.getBlock(i, j);
                 if (block != null) {
                     block.tick(event);
+                    this.dropBlock(i, j);
                 }
             }
         }
