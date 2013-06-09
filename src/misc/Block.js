@@ -56,7 +56,7 @@
 		//tick event
         
         // falling (TODO: STATES)
-        
+        this.drop();
 				
 	}
 
@@ -105,6 +105,13 @@
 		this.y = (Grid.HEIGHT - row - 1) * Block.HEIGHT;
 	}
 	
+    p.drop = function () {
+        if (this.row != 0 && this.grid.getBlock(this.col, this.row-1) == null) {
+            this.grid.dropBlock(this.col, this.row);
+            this.setPosition(this.col, this.row-1);
+        }
+    }
+    
 	window.Block = Block;
 
 }(window));

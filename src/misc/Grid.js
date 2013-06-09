@@ -94,7 +94,9 @@
 	}
     
     p.dropBlock = function(col, row) {
-        
+        block = this.getBlock(col, row);
+        this.setBlockPosition(null, col, row);
+        this.setBlockPosition(block, col, row-1);
     }
 	
 	p.tick = function (event) {
