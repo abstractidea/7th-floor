@@ -91,6 +91,14 @@
 			this.setLeftPosition(this.col, this.row - 1);
 		}
 	}
+
+	p.getRow = function() {
+		return this.row;
+	}
+
+	p.getCol = function() {
+		return this.col;
+	}
 	
 	window.Cursor = Cursor;
 

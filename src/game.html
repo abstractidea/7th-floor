@@ -51,6 +51,8 @@
 			grid.x = 128;
 			grid.y = 128;
 
+			grid.createBlock(1, 0, 3);
+			grid.createBlock(2, 0, 1);
 			grid.createBlock(2, 2, 2);
 			grid.createBlock(3, 2, 2);
 			grid.createBlock(3, 3, 2);
@@ -94,6 +96,9 @@
 				case Keycode.DOWN:
 				case Keycode.S:
 					cursor.attemptMoveDown();
+					break;
+				case Keycode.SPACE:
+					grid.swapBlocks(cursor.getCol(), cursor.getRow());
 					break;
 			}
 		}
