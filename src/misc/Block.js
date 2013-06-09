@@ -106,9 +106,8 @@
 	}
 	
     p.drop = function () {
-        if (this.row != 0 && this.grid.getBlock(this.col, this.row-1) == null) {
+        if (this.row > 0 && this.grid.getBlock(this.col, this.row-1) == null) {
             this.grid.dropBlock(this.col, this.row);
-            this.setPosition(this.col, this.row-1);
         }
     }
     

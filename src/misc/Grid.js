@@ -94,9 +94,12 @@
 	}
     
     p.dropBlock = function(col, row) {
-        block = this.getBlock(col, row);
-        this.setBlockPosition(null, col, row);
-        this.setBlockPosition(block, col, row-1);
+        block1 = this.getBlock(col, row);
+        block2 = null
+        
+        // TODO send blocks into falling state
+        this.setBlockPosition(block1, col, row-1);
+        this.setBlockPosition(block2, col, row);
     }
 	
 	p.tick = function (event) {
