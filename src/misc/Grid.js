@@ -63,11 +63,14 @@
 	
 	// put a block into the blockGrid at position
 	p.createBlock = function (col, row, blockType) {
-		block = new Block(col, row, blockType);
-		this.blockGrid[col][row] = block;
-		block.setPosition(col, row);
-        block.setGrid(this);
-		this.blockContainer.addChild(block);
+    
+        if (!this.getBlock(col, row)) {
+            block = new Block(col, row, blockType);
+            this.blockGrid[col][row] = block;
+            block.setPosition(col, row);
+            block.setGrid(this);
+            this.blockContainer.addChild(block);
+        }
 	}
 	
 	// swap a block with block to the right
@@ -164,6 +167,12 @@
             this.generateRow();
             // TODO shift cursor up
         }
+    }
+    
+    // check block to find matches
+    p.getMatch = function(col, row) {
+        while (
+    
     }
 	
 	p.tick = function (event) {
