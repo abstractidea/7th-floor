@@ -22,6 +22,7 @@
 	<script type="text/javascript" src="./misc/Cursor.js"></script>
 	<script type="text/javascript" src="./misc/Block.js"></script>
 	<script type="text/javascript" src="./misc/Grid.js"></script>
+	<script type="text/javascript" src="./misc/GridFrame.js"></script>
 	<script type="text/javascript">
 		// global variables
 		var cursor;
@@ -50,6 +51,10 @@
 			stage.addChild(grid);
 			grid.x = 128;
 			grid.y = 128;
+            gridFrame = new GridFrame();
+            stage.addChild(gridFrame);
+            gridFrame.x = 128;
+            gridFrame.y = 128;
 
 			grid.createBlock(1, 0, 3);
 			grid.createBlock(2, 0, 1);
