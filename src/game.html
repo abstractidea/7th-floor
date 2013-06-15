@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="../src/easeljs/display/Text.js"></script>
 
 	<script type="text/javascript" src="./misc/Color.js"></script>
+	<script type="text/javascript" src="./misc/BlockState.js"></script>
 	<script type="text/javascript" src="./misc/Keycode.js"></script>
 	<script type="text/javascript" src="./misc/Cursor.js"></script>
 	<script type="text/javascript" src="./misc/Block.js"></script>
@@ -47,7 +48,8 @@
 			text.x = 32;
 			text.y = 32;
 
-			grid = new Grid();
+		    cursor = new Cursor();
+			grid = new Grid(cursor);
 			stage.addChild(grid);
 			grid.x = 128;
 			grid.y = 128;
@@ -69,7 +71,6 @@
 			grid.swapBlocks(3,3);
             grid.swapBlocks(4,3);
 
-		    cursor = new Cursor();
 		    grid.addChild(cursor);
 		    cursor.setLeftPosition(2,3);
 

@@ -1,7 +1,8 @@
 (function (window) {
 
-	function Grid() {
+	function Grid(cursorHandle) {
 		this.initialize();
+        this.cursor = cursorHandle;
 	}
 
 	var p = Grid.prototype = new createjs.Container();
@@ -15,6 +16,7 @@
 	p.color;
 	p.gridBody;
     p.climbHeight;
+    p.cursor;
 	
 	// 2d array of blocks
 	p.blockGrid;
@@ -166,12 +168,13 @@
             this.climbHeight -= Block.HEIGHT;
             this.generateRow();
             // TODO shift cursor up
+            this.cursor.attemptMoveUp(); // hacky temp approach (avoid implicitely calling globals) this is only for checking the functionality
         }
     }
     
     // check block to find matches
     p.getMatch = function(col, row) {
-        while (
+        //while (
     
     }
 	

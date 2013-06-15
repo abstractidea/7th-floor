@@ -20,6 +20,7 @@
 	p.col;
 	p.row;
     p.grid;
+    p.state;
 
 // constructor:
 	p.Container_initialize = p.initialize;	//unique to avoid overiding base class
@@ -27,6 +28,7 @@
 	p.initialize = function () {
 		this.Container_initialize();
 
+		this.state = BlockState.CREATE;
 		this.blockBody = new createjs.Shape();
 		this.addChild(this.blockBody);
 		this.color = "#ff0000";
