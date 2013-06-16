@@ -5,11 +5,11 @@
  * states for a Block).
  */
 var BlockState = {
-	CREATE : 0,
-    FALL : 1,
+	CREATING : 0,
+    FALLING : 1,
     SETTLED : 2,
-    INCUBATE : 3,
-    SWAP : 4,
-    DEATH : 5,
+    INCUBATING : 3,
+    SWAPPING : 4,
+    DYING : 5,
     GONE : 6
 }
