@@ -27,8 +27,8 @@
 
 	p.initialize = function () {
 		this.Container_initialize();
-
-		this.state = BlockState.CREATE;
+		
+		this.state = BlockState.CREATING;
 		this.blockBody = new createjs.Shape();
 		this.addChild(this.blockBody);
 		this.color = "#ff0000";
@@ -54,6 +54,7 @@
 
 	}
 
+/* Block doesn't presently need a tick function.  Disabled until further notice -Matthew
 	p.tick = function (event) {
 		//tick event
         
@@ -61,31 +62,28 @@
         //this.drop();
 				
 	}
+*/
 
 	p.setType = function (blockType) {
 		this.type = blockType;
         switch (blockType) {
             case Color.GREEN:
                 this.color = "green";
-                this.makeShape();
                 break;
             case Color.BLUE:
                 this.color = "blue";
-                this.makeShape();
                 break;
             case Color.PURPLE:
                 this.color = "purple";
-                this.makeShape();
                 break;
             case Color.RED:
                 this.color = "red";
-                this.makeShape();
                 break;
             case Color.YELLOW:
                 this.color = "yellow";
-                this.makeShape();
                 break;
-        }        
+        }
+        this.makeShape();
 	}
 	
 	p.getType = function () {

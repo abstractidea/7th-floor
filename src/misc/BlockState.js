@@ -7,7 +7,7 @@
 var BlockState = {
 	CREATING : 0,
     FALLING : 1,
-    SETTLED : 2,
+    SITTING : 2,
     INCUBATING : 3,
     SWAPPING : 4,
     DYING : 5,

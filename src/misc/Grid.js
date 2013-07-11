@@ -44,8 +44,6 @@
         
         this.blockContainer = new createjs.Container();
         this.addChild(this.blockContainer);
-        
-        
 	}
 
 // public methods:
@@ -179,8 +177,10 @@
     }
 	
 	p.tick = function (event) {
-		//tick event
+		//TODO climb will need refactored after implementing block statefullness -Matthew
         this.handleClimb();
+
+        //block.tick(event); // disabled until further notice -Matthew
         
         //tick all blocks
         //try to let blocks fall
@@ -188,12 +188,11 @@
             for (var j=1;j<Grid.HEIGHT;j++) {
                 block = this.getBlock(i, j);
                 if (block != null) {
-                    block.tick(event);
+                    //block.tick(event); // disabled until further notice -Matthew
                     this.dropBlock(i, j);
                 }
             }
         }
-				
 	}
 
 	window.Grid = Grid;
